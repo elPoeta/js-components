@@ -1,1 +1,3 @@
-console.log("Hello-World");
+import { GlitchButton } from "./GlitchButton";
+
+window.customElements.define("poeta-glitch-button", GlitchButton);
