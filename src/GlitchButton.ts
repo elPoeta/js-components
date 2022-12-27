@@ -15,18 +15,27 @@ export class GlitchButton extends HTMLElement {
   }
 
   setComponentAttributes() {
-    const attributesMapping = ["text"];
-    attributesMapping.forEach((key) => {
-      if (!this.attributes.getNamedItem(key)) {
-        const attr = document.createAttribute(key);
-        attr.value = "button";
+    const attributesMapping = [
+      { key: "text", value: "button" },
+      { key: "color", value: "#ffc107" },
+      { key: "bg", value: "#1f3c5f" },
+      { key: "w", value: "300px" },
+      { key: "h", value: "65px" },
+      { key: "fs", value: "35px" },
+    ];
+    attributesMapping.forEach((attrMap) => {
+      if (
+        !this.attributes.getNamedItem(attrMap.key) ||
+        this.attributes.getNamedItem(attrMap.key)?.value === ""
+      ) {
+        const attr = document.createAttribute(attrMap.key);
+        attr.value = attrMap.value;
         this.attributes.setNamedItem(attr);
       }
     });
-    const attrs = Object.fromEntries(
-      Array.from(this.attributes).map((item) => [item.name, item.value])
-    );
-    console.log(attrs);
+    // const attrs = Object.fromEntries(
+    //   Array.from(this.attributes).map((item) => [item.name, item.value])
+    // );
   }
 
   render() {
@@ -59,16 +68,18 @@ button::after {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 300px;
-  height: 65px;
-  font-size: 36px;
+  width: ${this.attributes.getNamedItem("w")?.value};
+  height: ${this.attributes.getNamedItem("h")?.value};
+  font-size: ${this.attributes.getNamedItem("fs")?.value};
   font-family: serif, cursive;
-  background: linear-gradient(45deg, transparent 5%, #1f3c5f 5%);
+  background: linear-gradient(45deg, transparent 5%, ${
+    this.attributes.getNamedItem("bg")?.value
+  } 5%);
   border: 0;
-  color: #ffc107;
+  color: ${this.attributes.getNamedItem("color")?.value};
   letter-spacing: 3px;
   line-height: 88px;
-  box-shadow: 6px 0 0 #ffc107;
+  box-shadow: 6px 0 0 ${this.attributes.getNamedItem("color")?.value};
   outline: transparent;
 }
 button::after {
@@ -84,8 +95,14 @@ button::after {
   top: 0;
   left: 0;
   bottom: 0;
-  background: linear-gradient(45deg, transparent 3%, #f8f005 3%, #f8f005 5%, #1f3c5f 5%);
-  text-shadow: -3px -3px 0 #f8f005, 3px 3px 0 #f8f005;
+  background: linear-gradient(45deg, transparent 3%, ${
+    this.attributes.getNamedItem("color")?.value
+  } 3%, ${this.attributes.getNamedItem("color")?.value} 5%, ${
+      this.attributes.getNamedItem("bg")?.value
+    }5%);
+  text-shadow: -3px -3px 0 ${
+    this.attributes.getNamedItem("color")?.value
+  }, 3px 3px 0 ${this.attributes.getNamedItem("color")?.value};
   clip-path: var(--slice-0);
 }
     button:hover{
