@@ -1,3 +1,3 @@
-import { GlitchButton } from "./GlitchButton.js";
+import { GlitchButton } from "./components/glitchButton/GlitchButton.js";
 
 window.customElements.define("poeta-glitch-button", GlitchButton);

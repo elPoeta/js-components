@@ -1,9 +1,10 @@
-export class GlitchButton extends HTMLElement {
-  private shadowDOM: ShadowRoot;
+import { CustomComponent } from "../CustomComponent.js";
+
+export class GlitchButton extends CustomComponent {
   private button: HTMLButtonElement | null;
+
   constructor() {
-    super();
-    this.shadowDOM = this.attachShadow({ mode: "open" });
+    super({ mode: "closed" });
     this.button = null;
     this.handleClick = this.handleClick.bind(this);
   }
@@ -40,8 +41,8 @@ export class GlitchButton extends HTMLElement {
 
   render() {
     this.shadowDOM.innerHTML = `
-      ${this.css()}
-      ${this.template()}
+      ${this.cssTemplate()}
+      ${this.htmlTemplate()}
     `;
   }
 
@@ -54,12 +55,12 @@ export class GlitchButton extends HTMLElement {
     console.log(ev.target);
   }
 
-  template(): string {
+  htmlTemplate(): string {
     const textValue = this.attributes.getNamedItem("text")?.value;
     return `<button data-content="${textValue}"}>${textValue}</button>`;
   }
 
-  css(): string {
+  cssTemplate(): string {
     return `
     <style>
     button,
