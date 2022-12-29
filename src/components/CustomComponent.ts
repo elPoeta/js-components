@@ -8,9 +8,24 @@ export abstract class CustomComponent extends HTMLElement implements ISchema {
     this.shadowDOM = this.attachShadow(init);
   }
 
-  abstract setComponentAttributes(): void;
+  connectedCallback() {
+    this.setComponentAttributes();
+    this.render();
+    this.initComponent();
+  }
 
-  abstract render(): void;
+  disconnectedCallback() {
+    this.remove();
+  }
+
+  render() {
+    this.shadowDOM.innerHTML = `
+      ${this.cssTemplate()}
+      ${this.htmlTemplate()}
+    `;
+  }
+
+  abstract setComponentAttributes(): void;
 
   abstract initComponent(): void;
 
