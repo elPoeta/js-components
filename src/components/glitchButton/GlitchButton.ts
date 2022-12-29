@@ -9,12 +9,6 @@ export class GlitchButton extends CustomComponent {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  connectedCallback() {
-    this.setComponentAttributes();
-    this.render();
-    this.initComponent();
-  }
-
   setComponentAttributes() {
     const attributesMapping = [
       { key: "text", value: "button" },
@@ -37,13 +31,6 @@ export class GlitchButton extends CustomComponent {
     // const attrs = Object.fromEntries(
     //   Array.from(this.attributes).map((item) => [item.name, item.value])
     // );
-  }
-
-  render() {
-    this.shadowDOM.innerHTML = `
-      ${this.cssTemplate()}
-      ${this.htmlTemplate()}
-    `;
   }
 
   initComponent() {
@@ -160,9 +147,5 @@ button::after {
     }
     </style>
     `;
-  }
-
-  disconnectedCallback() {
-    this.remove();
   }
 }
