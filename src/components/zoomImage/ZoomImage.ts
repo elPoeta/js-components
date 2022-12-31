@@ -157,11 +157,13 @@ export class ZoomImage extends CustomComponent {
        background-repeat: no-repeat;
        height: ${this.attributes.getNamedItem("height")?.value}px;
        width: max-content;
+       margin: 0;
      }
     .tumb {
+      display: flex;
       align-items: center;
       justify-content: center;
-      padding:1px;
+      padding: 5px;
     }
     .tumb img {
       max-width: 100%;

@@ -7,14 +7,55 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="./dist/index.js" type="module" defer></script>
   <title>web components</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    .container {
+      width: 60%;
+      margin: 1.2rem auto;
+      color: #0f172a;
+    }
+
+    .sub-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    section {
+      margin: 2rem 0;
+      padding: 1rem;
+    }
+
+    section h3 {
+      margin: 10px 0;
+      color: #1e293b;
+    }
+  </style>
 </head>
 
 <body>
-  <h1>Web Components</h1>
-  <h3>Giltch button</h3>
-  <poeta-glitch-button text="elPoeta" color="#ffc107" bg="#1f3c5f" w="300px" h="65px" fs="35px"></poeta-glitch-button>
-  <h3>Z00m Image</h3>
-  <poeta-zoom-image height="300"></poeta-zoom-image>
+  <div class="container">
+    <h1>Web Components</h1>
+    <div class="sub-container">
+
+      <section class="glitchBtn">
+        <h3>Giltch button</h3>
+        <poeta-glitch-button text="elPoeta" color="#ffc107" bg="#1f3c5f" w="300px" h="65px"
+          fs="35px"></poeta-glitch-button>
+      </section>
+
+      <section>
+        <h3>Z00m Image</h3>
+        <poeta-zoom-image height="300"></poeta-zoom-image>
+      </section>
+
+    </div>
+  </div>
 </body>
 
 </html>
