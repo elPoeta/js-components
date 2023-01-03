@@ -20,15 +20,14 @@
     }
 
     .sub-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      display: grid;
+      grid-template-columns: 1fr;
     }
 
     section {
       margin: 2rem 0;
       padding: 1rem;
+      justify-self: center;
     }
 
     section h3 {
@@ -56,7 +55,8 @@
 
       <section>
         <h3>Chart</h3>
-        <poeta-chart></poeta-chart>
+        <poeta-chart width="400" height="400"
+          values='[{"name":"March","value":95400},{"name":"April","value":12700},{"name":"May","value":52500},{"name":"June","value":120800},{"name":"July","value":14050}]'></poeta-chart>
       </section>
 
     </div>
